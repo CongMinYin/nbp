@@ -23,6 +23,7 @@ type Nvmeof struct{}
 func init() {
 	connector.RegisterConnector(connector.NvmeofDriver, &Nvmeof{})
 	connector.ExecCmd("modprobe", "nvme-rdma")
+	connector.ExecCmd("modprobe", "mlx4_core")
 }
 
 func (nof *Nvmeof) Attach(conn map[string]interface{}) (string, error) {

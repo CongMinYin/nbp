@@ -55,9 +55,9 @@ docker: build
 	cp $(BUILD_DIR)/csi.server.opensds ./csi/server
 	cp $(BUILD_DIR)/csi.client.opensds ./csi/client
 	cp $(BUILD_DIR)/service-broker ./service-broker/cmd/service-broker
-	docker build csi/server -t opensdsio/csiplugin:$(IMAGE_TAG)
-	docker build csi/client -t opensdsio/csipluginclient:$(IMAGE_TAG)
-	docker build service-broker/cmd/service-broker -t opensdsio/service-broker:$(IMAGE_TAG)
+	docker build csi/server -t opensdsio/csiplugin:$(IMAGE_TAG) --build-arg http_proxy=http://child-prc.intel.com:913
+	docker build csi/client -t opensdsio/csipluginclient:$(IMAGE_TAG) --build-arg http_proxy=http://child-prc.intel.com:913
+	docker build service-broker/cmd/service-broker -t opensdsio/service-broker:$(IMAGE_TAG) --build-arg http_proxy=http://child-prc.intel.com:913
 
 goimports:
 	goimports -w $(shell go list -f {{.Dir}} ./... |grep -v /vendor/)

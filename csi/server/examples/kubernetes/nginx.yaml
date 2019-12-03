@@ -8,7 +8,7 @@ metadata:
 provisioner: csi-opensdsplugin
 parameters:
   attachMode: rw
-  profile: abc
+  profile: 2f2d1ded-6505-4744-9f73-f8b1bf572909
 allowedTopologies:
 - matchLabelExpressions:
   - key: topology.csi-opensdsplugin/zone
@@ -24,7 +24,7 @@ spec:
   - ReadWriteMany
   resources:
     requests:
-      storage: 1Gi
+      storage: 50Gi
   storageClassName: csi-sc-opensdsplugin
 
 ---
